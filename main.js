@@ -23,6 +23,18 @@ function init() {
 
     // 2-3 平面を追加する
     scene.add(plane);
+
+    // 3-1 カメラの位置 見え方を設定する
+    camera.position.x = -30;
+    camera.position.y = 40;
+    camera.position.z = 30;
+    camera.lookAt(scene.position);
+
+    // 3-2 jsのappendChild関数でdiv要素に追加
+    document.getElementById("WebGL-output").appendChild(renderer.domElement);
+
+    // 3-3 rendererにsecne cameraの描画を指示する
+    renderer.render(scene, camera);
 }
 
 window.onload = init;
