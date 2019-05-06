@@ -30,6 +30,11 @@ function init() {
     camera.position.z = 30;
     camera.lookAt(scene.position);
 
+    // 4 光源を追加する
+    var spotLight = new THREE.SpotLight(0xffffff);
+    spotLight.position.set(-20, 30, -5);
+    scene.add(spotLight);
+
     // 3-2 jsのappendChild関数でdiv要素に追加
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
 
