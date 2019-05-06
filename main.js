@@ -10,6 +10,9 @@ function init() {
     renderer.setClearColor(new THREE.Color(0xEEEEEE));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
+    // 6-1 レンラダラーに影の利用を伝える
+    renderer.shadowMap.enabled = true;
+
     // 2-1 平面を作成する
     var planeGeometry = new THREE.PlaneGeometry(60, 20);
     var planeMaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
@@ -21,6 +24,9 @@ function init() {
     plane.position.y = 0;
     plane.position.z = 0;
 
+    // 6-2 影の利用
+    plane.receiveShadow = true;
+
     // 2-3 平面を追加する
     scene.add(plane);
 
@@ -28,10 +34,15 @@ function init() {
     var cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
     var cubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000});
     var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+
+    // 6-3 影の利用
+    cube.castShadow = true;
+
     // 5-2 cubeの位置
     cube.position.x = -4;
     cube.position.y = 3;
     cube.position.z = 0;
+
     // 5-3 cubeの追加
     scene.add(cube);
 
@@ -39,10 +50,15 @@ function init() {
     var sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
     var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
     var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+
+    // 6−4 影の利用
+    sphere.castShadow = true;
+
     // 5-5 sphereの位置
     sphere.position.x = 20;
     sphere.position.y = 0;
     sphere.position.z = 2;
+
     // 5-6 sphereの追加
     scene.add(sphere);
 
@@ -56,6 +72,9 @@ function init() {
     var spotLight = new THREE.SpotLight(0xffffff);
     spotLight.position.set(-20, 30, -5);
     scene.add(spotLight);
+
+    // 6−5 spotLightを影に対応させる
+    spotLight.castShadow = true;
 
     // 3-2 jsのappendChild関数でdiv要素に追加
     document.getElementById("WebGL-output").appendChild(renderer.domElement);
