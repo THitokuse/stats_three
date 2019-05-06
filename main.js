@@ -76,12 +76,20 @@ function init() {
     // 6−5 spotLightを影に対応させる
     spotLight.castShadow = true;
 
+    var step = 0;
+
     function render() {
         document.getElementById("WebGL-output").appendChild(renderer.domElement);
 
         // 8-1 cubeのアニメーション
+        cube.rotation.x += 0.02;
+        cube.rotation.y += 0.02;
+        cube.rotation.z += 0.02;
 
         // 8-2 sphereのアニメーション
+        step += 0.04;
+        sphere.position.x = 20 + ( 10 * (Math.cos(step)));
+        sphere.position.y = 2 + ( 10 * Math.abs(Math.sin(step)));
 
         requestAnimationFrame(render);
         renderer.render(scene, camera);
