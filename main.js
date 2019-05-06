@@ -76,11 +76,18 @@ function init() {
     // 6−5 spotLightを影に対応させる
     spotLight.castShadow = true;
 
-    // 3-2 jsのappendChild関数でdiv要素に追加
-    document.getElementById("WebGL-output").appendChild(renderer.domElement);
+    function render() {
+        document.getElementById("WebGL-output").appendChild(renderer.domElement);
 
-    // 3-3 rendererにsecne cameraの描画を指示する
-    renderer.render(scene, camera);
+        // 8-1 cubeのアニメーション
+
+        // 8-2 sphereのアニメーション
+
+        requestAnimationFrame(render);
+        renderer.render(scene, camera);
+    }
+    // 7-3 render関数を呼び出す
+    render();
 }
 
 window.onload = init;
