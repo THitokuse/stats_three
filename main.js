@@ -24,6 +24,28 @@ function init() {
     // 2-3 平面を追加する
     scene.add(plane);
 
+    // 5-1 cubeの作成
+    var cubeGeometry = new THREE.BoxGeometry(4, 4, 4);
+    var cubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000});
+    var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+    // 5-2 cubeの位置
+    cube.position.x = -4;
+    cube.position.y = 3;
+    cube.position.z = 0;
+    // 5-3 cubeの追加
+    scene.add(cube);
+
+    // 5−4 sphereの作成
+    var sphereGeometry = new THREE.SphereGeometry(4, 20, 20);
+    var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
+    var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    // 5-5 sphereの位置
+    sphere.position.x = 20;
+    sphere.position.y = 0;
+    sphere.position.z = 2;
+    // 5-6 sphereの追加
+    scene.add(sphere);
+
     // 3-1 カメラの位置 見え方を設定する
     camera.position.x = -30;
     camera.position.y = 40;
