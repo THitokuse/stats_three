@@ -1,3 +1,8 @@
+//変数の定義
+var camera;
+var scene;
+var renderer;
+
 function init() {
     // 1-1 scene オブジェクトを作成する
     scene = new THREE.Scene();
@@ -97,5 +102,12 @@ function init() {
     // 7-3 render関数を呼び出す
     render();
 }
+//9-1 ブラウザサイズが変更されたら出力を自動的にリサイズする
+function onResize() {
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth, window.innerHeight);
+}
+window.addEventListener('resize', onResize, false);
 
 window.onload = init;
